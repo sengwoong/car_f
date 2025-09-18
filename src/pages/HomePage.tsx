@@ -81,10 +81,13 @@ export function HomePage() {
           <div className="filter-row">
             {[
               { k: '', label: '전체' },
-              { k: 'under50', label: '50만 원 이하' },
-              { k: '50-70', label: '50~70만원' },
-              { k: '70-100', label: '70~100만원' },
-              { k: 'over100', label: '100만원 이상' },
+              { k: 'under20m', label: '2천만 원 이하' },
+              { k: '20-30m', label: '2천~3천만 원' },
+              { k: '30-40m', label: '3천~4천만 원' },
+              { k: '40-50m', label: '4천~5천만 원' },
+              { k: '50-60m', label: '5천~6천만 원' },
+              { k: '60-80m', label: '6천~8천만 원' },
+              { k: 'over80m', label: '8천만 원 이상' },
             ].map((p, idx) => (
               <button key={p.k + idx} className={`filter-chip ${(p.k ? price.includes(p.k) : price.length===0) ? 'active' : ''}`} onClick={()=> p.k ? toggleMulti('price', p.k) : updateParam('price', undefined)}>{p.label}</button>
             ))}
@@ -144,8 +147,8 @@ export function HomePage() {
               </div>
               <div className="card-body">
                 <div className="title">{car.name}</div>
-                <div className="info">72개월· 10,000km</div>
-                <div className="price">{car.monthlyMin ? `월 ${car.monthlyMin.toLocaleString()}원~` : ''}</div>
+                <div className="info">{(car as any).fuel ? `${String((car as any).fuel).toUpperCase()} · ` : ''}72개월· 10,000km</div>
+                <div className="price">{car.monthlyMin ? `${Math.round((car.monthlyMin||0)/10000).toLocaleString()}만원~` : ''}</div>
                 <div className="badges">
                   {car.tags?.map(t => <span key={t} className={`badge ${t==='NEW' ? 'primary' : ''}`}>{t}</span>)}
                 </div>

@@ -24,7 +24,7 @@ export type CarDetail = CarSummary & {
   description?: string
   trims: Trim[]
 }
-const base = ''
+const base = (import.meta as any).env?.VITE_API_BASE ?? ''
 
 export async function fetchCars(params: { q?: string; sort?: string; brand?: string; price?: string[]; type?: string[]; fuel?: string[] }) {
   const usp = new URLSearchParams()

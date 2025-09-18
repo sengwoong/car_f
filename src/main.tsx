@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 async function enableMocking() {
   try {
     if (import.meta.env.MODE !== 'development') return
+    if (import.meta.env.VITE_ENABLE_MSW !== 'true') return
     const { worker } = await import('./mocks/browser')
     await worker.start({ serviceWorker: { url: '/mockServiceWorker.js' } })
   } catch (e) {
