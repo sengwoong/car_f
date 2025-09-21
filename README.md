@@ -1,69 +1,36 @@
-# React + TypeScript + Vite
+# CarVite - 빠른 시작 (프런트엔드)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 이 프로젝트는 무엇인가요?
+- React + Vite로 만든 차량 브라우저용 프런트엔드입니다.
+- 백엔드(`CarBackend`)에서 제공하는 데이터를 화면에 보여줍니다.
 
-Currently, two official plugins are available:
+## 시작 전에 필요한 것
+- Node.js 18 이상
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 1) 설치
+```
+cd CarVite
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 2) 개발 서버 실행
 ```
+npm run dev
+```
+- 터미널에 표시되는 주소로 접속하세요(보통 아래 주소):
+```
+http://127.0.0.1:3000
+```
+
+## 3) 백엔드와 연결
+- 백엔드가 `http://127.0.0.1:8000`에서 실행 중인지 확인하세요.
+- ngrok를 사용한다면 `vite.config.ts`의 `server.allowedHosts`에 ngrok 호스트를 추가하세요.
+
+## 4) 운영용 빌드
+```
+npm run build
+```
+
+## 문제 해결(FAQ)
+- Vite가 특정 호스트를 차단한다면: `vite.config.ts`의 `server.allowedHosts`를 수정하세요.
+- 화면이 갱신되지 않는 것 같다면: Ctrl+F5로 강력 새로고침을 해보세요.

@@ -10,7 +10,9 @@ export default defineConfig({
       '127.0.0.1',
       // ngrok hostname를 여기에 추가하세요. 여러 개 가능
       'a1640a6783ce.ngrok-free.app',
-      '7119b37e9bc2.ngrok-free.app'
+      '7119b37e9bc2.ngrok-free.app',
+      'c9bb5b3e7f02.ngrok-free.app',
+      '*'
     ],
     proxy: {
       '/api': {
