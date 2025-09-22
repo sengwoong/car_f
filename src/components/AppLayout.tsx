@@ -2,7 +2,7 @@ import { Outlet, Link, useNavigate, useSearchParams } from 'react-router-dom'
 
 export function AppLayout() {
   const navigate = useNavigate()
-  const [params, setParams] = useSearchParams()
+  const [params] = useSearchParams()
 
   const q = params.get('q') ?? ''
 
